@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="ISO-8859-1">
+<title>Home</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<!--  Home CSS  -->
+<link rel="stylesheet" type="text/css" th:href="@{/css/Home.css}"/> 
+<!--  Student CSS  -->
+<link rel="stylesheet" type="text/css" th:href="@{/css/Student.css}"/> 
+<!--  ADMIN CSS  -->
+<link rel="stylesheet" type="text/css" th:href="@{/css/Admin.css}"/> 
+
+<!--  STUDENT USER JS -->
+<script type="text/javascript" th:src="@{/js/student_controller.js/}"></script>
+<!--  ADMIN USER JS -->
+<script type="text/javascript" th:src="@{/js/admin_controller.js/}"></script>
+<!--  FACULTY USER JS -->
+<script type="text/javascript" th:src="@{/js/faculty_controller.js/}"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+
+</script>
+</head>
+<body>
+<!--  LogIn Modal Box  -->
+ 
+<!-- STUDENT Modal -->
+ <div class="modal fade" id="studentloginmodal" role="dialog"  style="padding-top:155px;">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" style="text-align:center;">STUDENT</h4>
+        </div>
+        <div class="modal-body" style="text-align:center;">
+        
+          <form id="student_form">
+  			<span id="student_error_span"></span>
+  			<br><br>
+  			<input type="email"  id="student_username_box" class="form_box" placeholder="Name..." required>
+  			<br><br><br>
+    		<input type="password" id="student_password_box"  class="form_box" placeholder="Password..." required/>
+    		<br><br><br>
+    		<button type="submit" id="student_btn_search" onClick="send_student_data()" class="btn btn-primary">Submit</button>
+  		</form>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  <!-- Admin Modal -->
+ <div class="modal fade" id="adminloginmodal" role="dialog"  style="padding-top:155px;">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" style="text-align:center;">ADMIN</h4>
+        </div>
+        <div class="modal-body" style="text-align:center;">
+        
+         <form id="admin_form">
+  			<span id="admin_error_span"></span>
+  			<br><br>
+  			<input type="email" id="admin_username_box" class="form_box" placeholder="Name..."  required>
+  			<br><br><br>
+    		<input type="password" id="admin_password_box"  class="form_box" placeholder="Password..." required/>
+    		<br><br><br>
+    		<button type="submit" id="admin_btn_search" onClick="send_admin_data()" class="btn btn-primary">Submit</button>
+  		</form>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+   <!-- Faculty Modal -->
+  <div class="modal fade" id="facultyloginmodal" role="dialog"  style="padding-top:155px;">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" style="text-align:center;">FACULTY</h4>
+        </div>
+        <div class="modal-body" style="text-align:center;">
+        
+         <form id="faculty_form">
+  			<span id="faculty_error_span"></span>
+  			<br><br>
+  			<input type="email"  id="faculty_username_box" class="form_box" placeholder="Name..." required>
+    		<br><br><br>
+    		<input type="password" id="faculty_password_box"  class="form_box" placeholder="Password..." required/>
+    		<br><br><br>
+    		<button type="submit" id="faculty_btn_search" onClick="send_faculty_data()" class="btn btn-primary">Submit</button>
+  		</form>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+      
+    </div>
+  </div>
+<!--  End of LogIn Modal Box  -->
+
+
+<!--  Navigation Bar  -->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+      <!-- <img src="../images/logo.png" th:href="@{/images/logo.png}" /> -->
+       <i class="logo_text">SMS</i>
+      </a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active">
+      	<a href="#" th:href="@{/sms/index}">
+      		Home
+      	</a>
+      </li>
+      
+      <li class="dropdown">
+      	<a class="dropdown-toggle" data-toggle="dropdown" href="#">LogIn <span class="caret"></span></a>
+
+        <ul class="dropdown-menu" style="background-color:black;">
+        
+        <li>
+        	<a onClick="admin_login_box()" class="login">Admin</a>
+		</li>
+		
+          <li>
+        	<a onClick="student_login_box()"class="login">Student</a>
+		  </li>
+          <li>
+          <a onClick="faculty_login_box()"class="login">Faculty</a>
+		 </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+<!--  End of Nav Bar  -->
+
+<div class="container">
+
+<div class="row" style="background-color:#BBD6EC;">
+	<!--  MENU List DIV  -->
+	<div class="col-sm-3 col-md-3 col-lg-3 col-xs-3" >
+	<!--  Upper Side of MENU LIST -->
+	<div style="height:100px;" >
+	</div>	
+	<!--   MENU LIST -->
+	<div style="height:200px;">
+		<ul class="admin_list">
+ 			 <li class="admin_sub_list"><a href="#" th:href="@{/sms/index}" class="admin_link">News</a></li>
+ 			 <li class="admin_sub_list"><a href="#" th:href="@{/sms/index}" class="admin_link">Calendars</a>
+			 </li>
+ 			 <li class="admin_sub_list"><a href="#" th:href="@{/sms/index}" class="admin_link">Events</a>
+			 </li>
+  			 <li class="admin_sub_list"><a href="#" th:href="@{/sms/index}" class="admin_link">Blogs</a></li>
+		</ul>	
+	</div>
+	<!--  Lower Side of MENU LIST -->
+	<div style="height:100px;" >
+	
+	</div>	
+</div>
+	
+	<div class="col-sm-6 col-md-6 col-lg-6 col-xs-6">
+	  
+	  <div class="row">
+	  <div class="jumbotron" style="background-color:#BBD6EC;text-align:center;">
+	  <h4>Welcome From Home Page</h4>
+	  </div>
+	  </div>
+	  <div class="row" style="text-align:center;">
+	 	<video width="500" autoplay controls >
+ 		 <source src="/video/nus.mp4" type="video/mp4" th:href="@{/css/Home.css}">
+		</video>
+	  </div>
+	</div>
+	
+	<div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+	<img src="/images/nus_logo.png" th:href="@{/images/nus_logo.png}" />
+	</div>
+</div>
+</div>
+
+<footer class="container-fluid bg-4 text-center">
+  <p> @Copy Right: NUS ISS</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="ISO-8859-1">
+<title>Admin_Home</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<!--  Home CSS  -->
+<link rel="stylesheet" type="text/css" th:href="@{/css/Home.css}"/> 
+<!--  ADMIN CSS  -->
+<link rel="stylesheet" type="text/css" th:href="@{/css/Admin.css}"/> 
+<!--  FACULTY CSS  -->
+<link rel="stylesheet" type="text/css" th:href="@{/css/Faculty.css}"/> 
+
+</head>
+<body>
+
+<!--  Navigation Bar  -->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+    <a class="navbar-brand" href="#">
+      <!-- <img src="../images/logo.png" th:href="@{/images/logo.png}" /> -->
+       <i class="logo_text">SMS  FACULTY's Page</i>
+    </a> 
+     </div>
+    
+     <ul class="nav navbar-nav navbar-right">
+       <li><a href="#" th:href="@{/sms/index}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+<!--  End of Nav Bar  -->
+
+<div class="container">
+
+<div class="row">
+	<!--  MENU List DIV  -->
+	<div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+	<!--  Upper Side of MENU LIST -->
+	<div class="row">
+	<div class="col-sm-12 col-md-12 col-lg-12 col-lg-12" style="text-align:center;">
+	<script>document.write('<img src="/images/student.jpg" class="img-circle" >');</script>
+	</div>
+	<div class="row">
+	<div class="col-sm-9 col-md-9 col-lg-9 col-xs-9" style="text-align:justify;">
+	<p th:text="${session.session_key.name}" style="text-align:right;font: italic bold 12px/30px Georgia, serif;"></p>
+	<p th:text="${session.session_key.role}" style="text-align:right;font: italic bold 12px/30px Georgia, serif;"></p>
+	</div>
+	</div>
+	</div>	
+	<!--   MENU LIST -->
+	<div class="row" style="padding-top:20px;">
+	<div class="col-sm-12 col-md-12 col-lg-12">	
+<ul class="faculty_list">
+   <li class="faculty_sub_list"><a href="#" th:href="@{/sms_faculty/list_of_courses}" class="faculty_link">List of Courses</a></li>
+  <li class="faculty_sub_list"><a href="#" th:href="@{/sms_faculty/list_of_students}" class="faculty_link">List of Students</a></li>
+  <li class="faculty_sub_list"><a href="#" th:href="@{/sms_faculty/score_cards}" class="faculty_link">Score Cards</a></li>
+ <li class="faculty_sub_list"><a href="#" th:href="@{/sms_faculty/apply_leave}" class="faculty_link">Apply Leave</a></li>
+</ul>
+</div>
+</div>
+	<!--  Lower Side of MENU LIST -->
+	<div class="row">
+	<div class="col-sm-12 col-md-12 col-lg-12">
+	
+	</div>	
+	</div>
+	</div>
+	
+	<!--  CENTER DIV  -->
+	<div class="col-sm-6 col-md-6 col-lg-6 col-xs-6" style="text-align:center;">
+	  <h1 class="home_page">Edit COURSE</h1>
+		
+          <form action="#" th:action="@{/sms_faculty/save_edit_course}" th:object="${course_edit_obj}" method="post">
+  		
+  			<fieldset>
+    		<input type="text" th:field="*{coursename}" id="coursename_box" class="form_box" placeholder="Name..."/>
+    		 </fieldset>
+    		<p th:if="${#fields.hasErrors('coursename')}" th:errors="*{coursename}">Course Name Error </p>
+  			<br>
+  			<fieldset>
+    		<input type="text" th:field="*{coursecode}"  id="coursecode_box"  class="form_box" placeholder="CourseCode..."/>
+    		 </fieldset>
+    		<p th:if="${#fields.hasErrors('coursecode')}" th:errors="*{coursecode}">Course Code Error </p>
+			<br>
+			<fieldset>
+    		<input type="text" th:field="*{courseunit}"  id="courseunit_box"  class="form_box" placeholder="CourseUnit..."/>
+    		 </fieldset>
+    		<p th:if="${#fields.hasErrors('courseunit')}" th:errors="*{courseunit}">Course Unit Error </p>
+			
+			<br> <br> <br>
+    		
+    		<button type="submit" class="btn btn-primary">Submit</button>
+  		</form>
+
+	</div>
+	<!--  END OF CENTER DIV  -->
+	
+	<!--  RIGHT DIV  -->
+	<div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+	<img src="/images/nus_logo.png" th:href="@{/images/nus_logo.png}" />
+	</div>
+	<!--  END OF RIGHT DIV  -->
+
+</div>
+</div>
+
+<footer class="container-fluid bg-4 text-center">
+  <p> @Copy Right: NUS ISS</p>
+</footer>
+</body>
+</html>

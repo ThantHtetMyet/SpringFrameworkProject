@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<a href="#" id="enroll_course_link" th:attr="onclick=|Student_EnrollCourse('${course.coursename}')|"  ><span class="glyphicon glyphicon-plus"></span>Enroll</a>
+	
+<!-- Enroll STUDENT Modal -->
+ <div class="modal fade" id="enrollmodal" role="dialog"  style="padding-top:155px;margin:0 auto;">
+    <div id="enroll-modal-dialog">
+      <!-- Modal content-->
+      <div  id="enroll-modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" style="text-align:center;">Registration</h4>
+        </div>
+        <div class="modal-body" style="text-align:center;margin:0 auto;">
+          <form id="enrollcourse_form">
+  			<table class="enroll_table" style="text-align:center;margin:0 auto; width: 100%;">
+  			<tr>
+  			<td style=" height: 50px;">
+  			<input type="email" name="emailaddress" id="enroll_studentid_box" class="form_box" placeholder="gmail.." required>
+  			</td>
+  			</tr>
+  			<tr>
+  			<td style=" height: 50px;">
+  			<input type="text" id="enroll_firstname_box" class="form_box" placeholder="FirstName" required/>
+  			</td>
+  			</tr>
+  			<tr>
+  			<td style=" height: 50px;">
+  			<input type="text" id="enroll_lastname_box" class="form_box" placeholder="LastName" required/>
+  			</td>
+  			</tr>
+  			<tr>
+  			<td style=" height: 50px;">
+  			<input type="text" id="enroll_middlename_box" class="form_box" placeholder="MiddleName" required/>
+  			</td>
+  			</tr>
+  			<tr>
+  			<td style=" height: 50px;">
+  				<input type="radio" id="r1" name="rate" value="male"> male
+ 			    <input type="radio" id="r2" name="rate" value="female"> female
+  			</td>
+  			</tr>
+  			<tr>
+  			<td style=" height: 50px;">
+  				<input type="date" name="bday" id="birthdate" required>
+  			</td>
+  			</tr>
+  			<tr>
+  			<td style=" height: 50px;">
+  			<input type="text" id="enroll_degree_box" class="form_box" placeholder="Degree" required/>
+  			</td>
+  			</tr>
+  			<tr>
+  			<td style=" height: 50px;">
+  			<input type="text" id="enroll_address_box" class="form_box" placeholder="Address" required/>
+  			</td>
+  			</tr>
+  			<tr>
+  			<td style=" height: 50px;">
+  			<input type="tel" id="enroll_phone_box" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+  			</td>
+  			</tr>
+  			<tr>
+  			<td style=" height: 50px;">
+  			    <button type="submit" id="student_btn_search" onClick="send_student_data()" class="btn btn-primary">Submit</button>
+  			</td>
+  			</tr>	
+  				
+  			</table>
+  			
+    	</form>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+	<!--  END OF CENTER DIV  -->
+	
+</body>
+</html>

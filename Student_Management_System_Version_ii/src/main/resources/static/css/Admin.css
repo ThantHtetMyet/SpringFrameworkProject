@@ -1,0 +1,35 @@
+@charset "ISO-8859-1";
+
+.admin_list{
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 0;
+  background-color: #f1f1f1;
+  border: 1px solid #555;
+}
+
+.admin_sub_list .admin_link {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.admin_sub_list {
+  text-align: center;
+  border-bottom: 1px solid #555;
+}
+
+.admin_sub_list:last-child {
+  border-bottom: none;
+}
+
+.admin_sub_list a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.admin_sub_list .admin_link:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}

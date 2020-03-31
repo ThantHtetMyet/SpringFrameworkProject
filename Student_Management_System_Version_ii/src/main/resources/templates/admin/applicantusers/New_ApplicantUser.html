@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="ISO-8859-1">
+<title>APPLICANT USER HOME</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<!--  ADMIN CSS  -->
+<link rel="stylesheet" type="text/css" th:href="@{/css/Admin.css}"/> 
+<!--  Home CSS  -->
+<link rel="stylesheet" type="text/css" th:href="@{/css/Home.css}"/> 
+<!--  STUDENT USER JS -->
+<script type="text/javascript" th:src="@{/js/student_controller.js/}"></script>
+<script type="text/javascript" th:src="@{/js/admin_controller.js/}"></script>
+</head>
+<body>
+<!--  Navigation Bar  -->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#" th:href="@{/sms_admin/index}">
+      <!-- <img src="../images/logo.png" th:href="@{/images/logo.png}" /> -->
+       <i class="logo_text">SMS  Administrator's Page</i>
+      </a>
+    </div>
+    
+     <ul class="nav navbar-nav navbar-right">
+       <li><a href="#" th:href="@{/sms/index}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+<!--  End of Nav Bar  -->
+
+<script>
+function admin_login_box(){
+    $("#admin_login_box").modal();
+    document.getElementById("admin_username_box").value = "";
+    document.getElementById("admin_password_box").value = "";
+ };
+
+function faculty_login_box(){
+    $("#faculty_login_box").modal();
+    document.getElementById("faculty_username_box").value = "";
+    document.getElementById("faculty_password_box").value = "";
+};
+
+function student_login_box(){
+    $("#student_login_box").modal();
+    document.getElementById("student_username_box").value = "";
+    document.getElementById("student_password_box").value = "";
+};
+</script>
+  
+<!--  End of LogIn Modal Box  -->
+
+<div class="container">
+
+<div class="row">
+<!--  MENU List DIV  -->
+	<div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+	<!--  Upper Side of MENU LIST -->
+	<div class="row">
+	<div class="col-sm-12 col-md-12 col-lg-12 col-lg-12" style="text-align:center;">
+	<script>document.write('<img src="/images/student.jpg" class="img-circle" >');</script>
+	</div>
+	<div class="row">
+	<div class="col-sm-9 col-md-9 col-lg-9 col-xs-9" style="text-align:justify;">
+	<p th:text="${session.session_key.name}" style="text-align:right;font: italic bold 12px/30px Georgia, serif;"></p>
+	<p th:text="${session.session_key.role}" style="text-align:right;font: italic bold 12px/30px Georgia, serif;"></p>
+	</div>
+	</div>
+	</div>	
+	
+	<!--   MENU LIST -->
+	<div class="row" style="padding-top:20px;">
+	<div class="col-sm-12 col-md-12 col-lg-12">	
+<ul class="admin_list">
+  <li class="admin_sub_list"><a href="#" th:href="@{/sms_admin/show_applicant_users}" class="admin_link">Pending Application</a></li>
+ <li class="admin_sub_list"><a href="#" th:href="@{/sms_admin/pending_faculty_user_leave}" class="admin_link">Pending Faculty User Leave</a></li>
+ <li class="admin_sub_list"><a href="#" th:href="@{/sms_admin/pending_faculty_user_leave}" class="admin_link">Pending Faculty User Leave</a></li>
+  <li class="admin_sub_list"><a href="#" th:href="@{/sms_admin/show_student_users}" class="admin_link">Student Users</a>
+		</li>
+  <li class="admin_sub_list"><a href="#" th:href="@{/sms_admin/show_faculty_users}" class="admin_link">Faculty Users</a>
+		</li>
+  <li class="admin_sub_list"><a href="#" th:href="@{/sms_admin/show_courses}" class="admin_link">Courses</a></li>
+  <li class="admin_sub_list"><a href="#" th:href="@{/sms_admin/show_departments}" class="admin_link">Departments</a></li> 
+</ul>
+</div>
+</div>
+	<!--  Lower Side of MENU LIST -->
+	<div class="row">
+	<div class="col-sm-12 col-md-12 col-lg-12">
+	
+	</div>	
+	</div>
+	</div>
+	
+	<!--  CENTER DIV  -->
+	<div class="col-sm-6 col-md-6 col-lg-6 col-xs-6" style="text-align:center;">
+	  <h1 class="home_page">APPLICANTS</h1>
+		<br><br>
+		
+          <form action="#" th:action="@{/sms_admin/save_new_applicantuser}" th:object="${applicantuser_new_obj}" method="post">
+  		
+  			<fieldset>
+    		<input type="text" th:field="*{id}" id="id_box" class="form_box" placeholder="id"/>
+    		 </fieldset>
+    		<p th:if="${#fields.hasErrors('id')}" th:errors="*{id}">REG ID Error </p>
+  			<br>
+  			<fieldset>
+    		<input type="text" th:field="*{firstname}"  id="firstname_box"  class="form_box" placeholder="firstname"/>
+    		 </fieldset>
+    		<p th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}">First Name Error </p>
+			<br>
+			<fieldset>
+    		<input type="text" th:field="*{lastname}"  id="lastname_box"  class="form_box" placeholder="lastname"/>
+    		 </fieldset>
+    		<p th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">LastName Error </p>
+			<br>
+			<fieldset>
+    		<input type="text" th:field="*{birthdate}"  id="birthdate_box"  class="form_box" placeholder="birthdate"/>
+    		 </fieldset>
+    		<p th:if="${#fields.hasErrors('birthdate')}" th:errors="*{birthdate}">BirthDate Error </p>
+			<br>
+			<fieldset>
+    		<input type="text" th:field="*{gender}"  id="gender_box"  class="form_box" placeholder="gender"/>
+    		 </fieldset>
+    		<p th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}">Gender Error </p>
+			<br>
+			<fieldset>
+    		<input type="text" th:field="*{address}"  id="address_box"  class="form_box" placeholder="address"/>
+    		 </fieldset>
+    		<p th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Address Error </p>
+			<br>
+			<fieldset>
+    		<input type="text" th:field="*{mobile}"  id="mobile_box"  class="form_box" placeholder="mobile"/>
+    		 </fieldset>
+    		<p th:if="${#fields.hasErrors('mobile')}" th:errors="*{mobile}">Mobile Error </p>
+			<br>
+			<fieldset>
+    		<input type="text" th:field="*{email}"  id="email_box"  class="form_box" placeholder="email"/>
+    		 </fieldset>
+    		<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error </p>
+			<br>
+    		<button type="submit">Submit</button>
+  		</form>
+
+	</div>
+	<!--  END OF CENTER DIV  -->
+	
+	<!--  RIGHT DIV  -->
+	<div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+	<img src="/images/nus_logo.png" th:href="@{/images/nus_logo.png}" />
+	</div>
+	<!--  END OF RIGHT DIV  -->
+
+</div>
+</div>
+<footer class="container-fluid bg-4 text-center">
+  <p> @Copy Right: NUS ISS</p>
+</footer>
+</body>
+</html>

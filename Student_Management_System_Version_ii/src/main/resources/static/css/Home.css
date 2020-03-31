@@ -1,0 +1,65 @@
+@charset "ISO-8859-1";
+
+body{
+	
+    background-color:#BBD6EC;
+}
+/*
+.navbar{
+       margin-bottom: 0!important;
+    } */
+.home_page
+{
+	font-size:21px;
+	text-align:center;
+}
+.navbar .login
+{
+	color:white;
+}
+.navbar .login:hover
+{
+	color:black;
+}
+
+.logo_text{
+	color:cyan;
+	font-size:22px;
+	text-align:center;
+}
+
+.form_box {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #000000;
+    text-align:center;
+}
+
+
+.modal-dialog {
+ 
+          width: 360px;
+ 
+          height:1100px !important;
+          
+          margin:auto;
+ 
+        }
+ 
+.modal-content {
+ 
+    /* 80% of window height */
+ 
+    height: 30%;
+ 
+    background-color:#BBD6EC;
+ 
+}   
+.bg-4 {
+  background-color: #2D618B;
+  height:45px;
+  line-height:45px;
+  text-align:center;
+  color: #ffffff;
+  margin-top:40px;
+}

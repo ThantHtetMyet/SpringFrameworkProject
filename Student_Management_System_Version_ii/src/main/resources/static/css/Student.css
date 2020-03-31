@@ -1,0 +1,21 @@
+@charset "ISO-8859-1";
+
+#enroll-modal-dialog {
+ 
+          width: 360px;
+ 
+          height:1100px !important;
+          
+          margin:auto;
+ 
+        }
+ 
+#enroll-modal-content {
+ 
+    /* 80% of window height */
+ 
+    height: 60%;
+ 
+    background-color:#BBD6EC;
+ 
+}   
